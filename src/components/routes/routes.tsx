@@ -8,7 +8,7 @@ import {Error404} from "../pages/Error404.tsx";
 import {Model} from "../pages/Model.tsx";
 
 
-const PATH = {
+export const PATH = {
     ADIDAS: '/adidas',
     PUMA: '/puma',
     ABIBAS: '/abibas',
@@ -23,47 +23,32 @@ export const router = createBrowserRouter([
         children: (
             [
                 {
+                    path: "/:model/:id",
+                    element: <Model/>,
+
+                },
+                {
                     path: PATH.ADIDAS,
                     element: <Adidas/>,
-                    children:(
-                        [{
-                            path:"/:model/:id",
-                            element:<Model/>
-                        }]
-                    )
+
                 },
                 {
                     path: PATH.PUMA,
                     element: <Puma/>,
-                    children:(
-                        [{
-                            path:"/:model/:id",
-                            element:<Model/>
-                        }]
-                    )
+
                 },
                 {
                     path: PATH.ABIBAS,
                     element: <Abibas/>,
-                    children:(
-                        [{
-                            path:"/:model/:id",
-                            element:<Model/>
-                        }]
-                    )
+
                 },
                 {
                     path: PATH.PRICES,
                     element: <Prices/>,
-                    children:(
-                        [{
-                            path:"/:model/:id",
-                            element:<Model/>
-                        }]
-                    )
+
                 }
             ]
         )
     },
 
-]);
+     ])
