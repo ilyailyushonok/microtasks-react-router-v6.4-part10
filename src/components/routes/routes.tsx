@@ -6,10 +6,11 @@ import {Abibas} from "../pages/Abibas.tsx";
 import {Puma} from "../pages/Puma.tsx";
 import {Error404} from "../pages/Error404.tsx";
 import {Model} from "../pages/Model.tsx";
+import { Suspense} from "react";
 
 
 export const PATH = {
-    ADIDAS: '/adidas',
+    ADIDAS:'/adidas',
     PUMA: '/puma',
     ABIBAS: '/abibas',
     PRICES: '/prices',
@@ -18,37 +19,55 @@ export const PATH = {
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <App/>,
+        element:
+            <Suspense fallback={<div>Loading...</div>}>
+                <App/>
+            </Suspense>,
         errorElement: <Error404/>,
         children: (
             [
                 {
                     path: "/:model/:id",
-                    element: <Model/>,
+                    element:
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Model/>
+                        </Suspense>
 
                 },
                 {
                     path: PATH.ADIDAS,
-                    element: <Adidas/>,
+                    element:
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Adidas/>
+                        </Suspense>,
 
                 },
                 {
                     path: PATH.PUMA,
-                    element: <Puma/>,
+                    element:
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Puma/>
+                        </Suspense>,
 
                 },
                 {
                     path: PATH.ABIBAS,
-                    element: <Abibas/>,
+                    element:
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Abibas/>,
+                        </Suspense>
 
                 },
                 {
                     path: PATH.PRICES,
-                    element: <Prices/>,
+                    element:
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Prices/>,
+                        </Suspense>
 
                 }
             ]
         )
     },
 
-     ])
+])
