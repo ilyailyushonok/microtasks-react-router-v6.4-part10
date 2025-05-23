@@ -81,3 +81,4 @@ export const Puma = () => {
     );
 };
 
+export default Puma;

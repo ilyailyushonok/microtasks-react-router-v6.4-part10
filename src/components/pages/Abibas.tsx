@@ -30,4 +30,5 @@ export const Abibas = () => {
         </div>
     );
 };
+export default Abibas
 
