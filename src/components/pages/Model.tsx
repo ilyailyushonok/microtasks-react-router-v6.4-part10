@@ -38,3 +38,5 @@ export const Model = () => {
     </div>
   );
 };
+
+export default Model;

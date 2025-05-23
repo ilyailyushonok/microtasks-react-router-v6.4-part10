@@ -88,3 +88,4 @@ export const Prices = (props: Props) => {
       </div>
     );
 };
+export default Prices;
