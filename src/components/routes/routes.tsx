@@ -18,6 +18,7 @@ export const PATH = {
     ABIBAS: '/abibas',
     PRICES: '/prices',
     PROTECTED:'/protected',
+    ERROR404: '/*',
 } as const;
 
 export const router = createBrowserRouter([
@@ -79,6 +80,10 @@ export const router = createBrowserRouter([
                         </ProtectedRoute>
                     </Suspense>
                 ),
+            },
+            {
+                path: PATH.ERROR404,
+                element:  <Error404/>
             },
         ],
     },
