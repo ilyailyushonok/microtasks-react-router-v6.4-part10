@@ -3,6 +3,7 @@ import { App } from "../../App.tsx";
 import { Error404 } from "../pages/Error404.tsx";
 import { lazy, Suspense } from "react";
 import {ProtectedPage} from "../pages/ProtectedPage.tsx";
+import {ProtectedRoute} from "./ProtectedRoute.tsx";
 
 // Ленивая загрузка компонентов
 const Adidas = lazy(() => import("../pages/Adidas"));
@@ -73,7 +74,9 @@ export const router = createBrowserRouter([
                 path: PATH.PROTECTED,
                 element: (
                     <Suspense fallback={<div>Loading...</div>}>
+                        <ProtectedRoute>
                         <ProtectedPage />
+                        </ProtectedRoute>
                     </Suspense>
                 ),
             },
