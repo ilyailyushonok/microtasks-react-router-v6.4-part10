@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { App } from "../../App.tsx";
 import { Error404 } from "../pages/Error404.tsx";
 import { lazy, Suspense } from "react";
+import {ProtectedPage} from "../pages/ProtectedPage.tsx";
 
 // Ленивая загрузка компонентов
 const Adidas = lazy(() => import("../pages/Adidas"));
@@ -15,6 +16,7 @@ export const PATH = {
     PUMA: '/puma',
     ABIBAS: '/abibas',
     PRICES: '/prices',
+    PROTECTED:'/protected',
 } as const;
 
 export const router = createBrowserRouter([
@@ -64,6 +66,14 @@ export const router = createBrowserRouter([
                 element: (
                     <Suspense fallback={<div>Loading...</div>}>
                         <Prices />
+                    </Suspense>
+                ),
+            },
+            {
+                path: PATH.PROTECTED,
+                element: (
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <ProtectedPage />
                     </Suspense>
                 ),
             },

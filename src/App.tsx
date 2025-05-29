@@ -15,6 +15,7 @@ export const App = () => {
           <S.NavWrapper><NavLink to={PATH.PUMA}>PUMA</NavLink></S.NavWrapper>
           <S.NavWrapper><NavLink to={PATH.ABIBAS}>ABIBAS</NavLink></S.NavWrapper>
           <S.NavWrapper><NavLink to={PATH.PRICES}>Цены для оптовиков</NavLink></S.NavWrapper>
+          <S.NavWrapper><NavLink to={PATH.PROTECTED}>ProtectedPage</NavLink></S.NavWrapper>
         </div>
 
       </div>
