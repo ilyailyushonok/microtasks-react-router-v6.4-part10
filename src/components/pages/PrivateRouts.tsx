@@ -1,14 +1,11 @@
-import {ReactNode} from "react";
-import {Navigate} from "react-router-dom";
+import {Navigate, Outlet} from "react-router-dom";
 
-type Props={
-    children?:ReactNode
-}
-export const PrivateRouts = ({children}:Props) => {
-   let isAuth=true
+
+export const PrivateRouts = () => {
+   let isAuth=false
     return (
         <div>
-            {isAuth?children:<Navigate to={'/login'}/>}
+            {isAuth?<Outlet/>:<Navigate to={'/login'}/>}
         </div>
     );
 };

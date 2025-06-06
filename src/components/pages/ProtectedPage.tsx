@@ -1,7 +1,8 @@
 
-export const ProtectedPage = () => {
+ const ProtectedPage = () => {
     return (
         <div>ProtectedPage</div>
     );
 };
+export default ProtectedPage;
 
