@@ -1,10 +1,10 @@
-import {createBrowserRouter, Navigate} from "react-router-dom";
-import { App } from "../../App.tsx";
-import { Error404 } from "../pages/Error404.tsx";
-import { lazy, Suspense } from "react";
-import {ProtectedPage} from "../pages/ProtectedPage.tsx";
-import {ProtectedRoute} from "./ProtectedRoute.tsx";
+import {createBrowserRouter, Navigate, RouteObject} from "react-router-dom";
+import {App} from "../../App.tsx";
+import {Error404} from "../pages/Error404.tsx";
+import {lazy, Suspense} from "react";
+import {PrivateRouts} from "../pages/PrivateRouts.tsx";
 import {Login} from "../Login.tsx";
+import {ProtectedPage} from "../pages/ProtectedPage.tsx";
 
 // Ленивая загрузка компонентов
 const Adidas = lazy(() => import("../pages/Adidas"));
@@ -23,16 +23,9 @@ export const PATH = {
     LOGIN: '/login',
 } as const;
 
-export const router = createBrowserRouter([
-    {
-        path: "/",
-        element: (
-            <Suspense fallback={<div>Loading...</div>}>
-                <App />
-            </Suspense>
-        ),
-        errorElement:<Navigate to={PATH.ERROR404}/>,
-        children: [
+
+const publicRoutes : RouteObject[]=[
+
             {
                 path: "/:model/:id",
                 element: (
@@ -73,16 +66,7 @@ export const router = createBrowserRouter([
                     </Suspense>
                 ),
             },
-            {
-                path: PATH.PROTECTED,
-                element: (
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <ProtectedRoute>
-                        <ProtectedPage />
-                        </ProtectedRoute>
-                    </Suspense>
-                ),
-            },
+
             {
                 path: PATH.ERROR404,
                 element:  <Error404/>
@@ -95,6 +79,30 @@ export const router = createBrowserRouter([
                     </Suspense>
                 ),
             },
-        ],
-    },
-]);
+
+]
+
+const privateRoutes : RouteObject[]=[
+    {
+    path: PATH.PROTECTED,
+        element: (
+       <ProtectedPage/>
+),
+}
+]
+export const router = createBrowserRouter([
+    {
+        path: "/",
+        element: (
+            <Suspense fallback={<div>Loading...</div>}>
+                <App />
+            </Suspense>
+        ),
+        errorElement:<Navigate to={PATH.ERROR404}/>,
+        children: [{
+            element:<PrivateRouts/>,
+            children:privateRoutes
+        },
+            ...publicRoutes,
+        ]
+    }])
