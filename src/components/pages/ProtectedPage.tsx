@@ -1,7 +1,14 @@
-export const ProtectedPage = () => {
+import {ReactNode} from "react";
+import {Navigate} from "react-router-dom";
+
+type Props={
+    children?:ReactNode
+}
+export const ProtectedPage = ({children}:Props) => {
+   let isLoggined=false
     return (
         <div>
-            ProtectedPage
+            {isLoggined?children:<Navigate to={'/login'}/>}
         </div>
     );
 };
