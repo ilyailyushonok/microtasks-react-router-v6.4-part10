@@ -18,7 +18,7 @@ export const PATH = {
     ABIBAS: '/abibas',
     PRICES: '/prices',
     PROTECTED:'/protected',
-    ERROR404: '/*',
+    ERROR404: '/error',
 } as const;
 
 export const router = createBrowserRouter([
