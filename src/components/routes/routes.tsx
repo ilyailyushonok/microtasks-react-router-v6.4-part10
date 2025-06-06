@@ -25,7 +25,6 @@ export const PATH = {
 
 
 const publicRoutes: RouteObject[] = [
-
     {
         path: "/:model/:id",
         element: (
